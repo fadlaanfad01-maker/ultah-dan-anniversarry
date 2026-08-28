@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu ❤️</title>
+    
+    <!-- Font Keren & Gratis dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. SETUP DASAR (TEMA CANVA LU) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0a0a0a; /* Hitam pekat */
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- 2. HALAMAN PEMBUKA (THE HOOK) --- */
+        #landing-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .envelope-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: breathe 3s infinite ease-in-out;
+        }
+
+        .open-btn {
+            background: transparent;
+            border: 2px solid #00ff88; /* Hijau Neon */
+            color: #00ff88;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .open-btn:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        /* --- 3. KONTEN UTAMA (AWALNYA DISEMBUNYIKAN) --- */
+        #main-content {
+            display: none; /* Disembunyikan dulu */
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Dekorasi Background (Nanti bisa diganti gambar Canva) */
+        .bg-decoration {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- 4. TYPOGRAPHY & ANIMASI --- */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #00ff88;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .typewriter-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            text-align: center;
+            min-height: 100px; /* Mencegah layout lompat */
+            margin-bottom: 40px;
+        }
+
+        /* --- 5. PLACEHOLDER FOTO (TEMPAT ASET CANVA NANTI) --- */
+        .photo-frame {
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 4/5; /* Rasio foto potrait */
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .placeholder-text {
+            color: #555;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- 6. CUSTOM MUSIC PLAYER (MP3) --- */
+        .music-container {
+            margin-top: 40px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background: #1a1a1a;
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .music-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+
+        .audio-player {
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        /* --- 7. KEYFRAMES ANIMASI --- */
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive untuk HP */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .typewriter-text { font-size: 1rem; }
+            .music-container { padding: 15px; }
+            .music-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dekorasi Background -->
+    <div class="bg-decoration"></div>
+
+    <!-- HALAMAN PEMBUKA -->
+    <div id="landing-page">
+        <div class="envelope-icon">💌</div>
+        <h2 style="margin-bottom: 30px; font-weight: 300;">Ada sesuatu buat kamu...</h2>
+        <button class="open-btn" onclick="openWebsite()">Buka Pesan</button>
+    </div>
+
+    <!-- KONTEN UTAMA -->
+    <div id="main-content">
+        <!-- Judul -->
+        <h1 class="fade-in-up" style="animation-delay: 0.2s;">Happy Birthday, Sayang!</h1>
+        
+        <!-- Teks Typewriter -->
+        <p id="typewriter" class="typewriter-text"></p>
+
+        <!-- Tempat Foto 1 (Placeholder) -->
+        <div class="photo-frame fade-in-up" style="animation-delay: 1.5s;">
+            <!-- NANTI GANTI src="" DENGAN LINK GAMBAR CANVA LU -->
+            <img src="https://placehold.co/400x500/1a1a1a/00ff88?text=Foto+Kalian+Di+Sini+(PNG)" alt="Foto Kenangan">
+        </div>
+
+        <!-- Teks Lanjutan -->
+        <p class="fade-in-up" style="text-align: center; line-height: 1.8; color: #ccc; animation-delay: 2s;">
+            Website ini aku buat khusus buat kamu. <br>
+            Scroll ke bawah buat lihat kejutan lainnya ya. ❤️
+        </p>
+
+        <!-- Custom MP3 Player -->
+        <div class="music-container fade-in-up" style="animation-delay: 2.5s;">
+            <div class="music-title">Our Song 🎵</div>
+            <!-- GANTI src="" DENGAN FILE MP3 LU NANTI -->
+            <!-- Contoh: src="audio/lagu-kita.mp3" -->
+            <audio controls class="audio-player">
+                <source src="audio/lagu-kita.mp3" type="audio/mpeg">
+                Browser kamu tidak mendukung audio player.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // --- LOGIKA INTERAKSI ---
+        
+        function openWebsite() {
+            // 1. Hilangkan halaman pembuka dengan animasi
+            const landing = document.getElementById('landing-page');
+            landing.style.opacity = '0';
+            landing.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                landing.style.display = 'none';
+                
+                // 2. Munculkan konten utama
+                const mainContent = document.getElementById('main-content');
+                mainContent.style.display = 'block';
+                
+                // Trigger reflow agar transisi opacity jalan
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    // 3. Jalankan efek ngetik
+                    typeWriterEffect();
+                }, 100);
+            }, 1000);
+        }
+
+        // --- EFEK MENGETIK (TYPEWRITER) ---
+        const textToType = "Selamat ulang tahun untuk orang paling spesial di hidup aku. Terima kasih udah jadi alasan aku tersenyum setiap hari. Semoga hari ini seindah senyum kamu...";
+        const typeWriterElement = document.getElementById('typewriter');
+        let i = 0;
+
+        function typeWriterEffect() {
+            if (i < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriterEffect, 50); // Kecepatan ngetik (makin kecil makin cepat)
+            }
+        }
+    </script>
+</body>
+</html>
